@@ -1,0 +1,41 @@
+subj_ID,exp_ID,session,daySession,context,trainingLevel,sniffTime,correctPort,response,latency,poke1Number,poke2Number,poke3Number,cumulative1,cumulative2,cumulative3,firstResponse,timestamp,port1Odor,port2Odor,port3Odor,temp,humidity,pressure,pokeOrder,pokeTimes
+Bruce,Mallory,1,1,Training,Training1,4000,port1,port1,14.94040203,1,1,2,4001,1012,4278,port3,10_08_20_11_04_53,SP,MO,Limonene,25.17,43.73,90.85333333,"['port3', 'port2', 'port3', 'port1']","[277, 1012, 4001, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port1,port1,16.82360911,1,0,0,4001,0,0,port1,10_08_20_11_05_32,SP,Limonene,Limonene,25.17,43.73,90.85333333,['port1'],[4001]
+Bruce,Mallory,1,1,Training,Training1,4000,port2,port2,8.313100338,8,5,2,16269,5504,445,port1,10_08_20_11_06_55,Limonene,SP,MO,25.17,43.73,90.85333333,"['port1', 'port1', 'port1', 'port1', 'port2', 'port3', 'port1', 'port2', 'port2', 'port1', 'port1', 'port1', 'port2', 'port3', 'port2']","[33, 4001, 4001, 1049, 841, 393, 494, 90, 44, 4001, 2304, 386, 528, 52, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port2,port2,11.73869658,5,1,0,7163,4001,0,port1,10_08_20_11_07_46,Blank,SP,MO,25.17,43.73,90.85333333,"['port1', 'port1', 'port1', 'port1', 'port1', 'port2']","[17, 4001, 2050, 77, 1018, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port1,port1,27.26111889,1,0,0,4001,0,0,port1,10_08_20_11_08_35,SP,Gloves,Blank,25.17,43.73,90.85333333,['port1'],[4001]
+Bruce,Mallory,1,1,Training,Training1,4000,port3,port3,5.008987188,2,2,1,6914,574,4001,port1,10_08_20_11_09_23,Cotton,MO,SP,25.17,43.73,90.85333333,"['port2', 'port1', 'port1', 'port2', 'port3']","[323, 4001, 2913, 251, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port3,port3,5.391943216,4,2,1,8281,1558,4001,port1,10_08_20_11_10_06,Limonene,Limonene,SP,25.17,43.73,90.85333333,"['port2', 'port1', 'port1', 'port1', 'port1', 'port2', 'port3']","[695, 4001, 4001, 33, 246, 863, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port2,port2,12.69764161,0,1,0,0,4001,0,port2,10_08_20_11_10_40,Blank,SP,MO,25.17,43.73,90.85333333,['port2'],[4001]
+Bruce,Mallory,1,1,Training,Training1,4000,port3,port3,2.874301434,1,1,1,374,399,4001,port3,10_08_20_11_11_11,Gloves,Gloves,SP,25.17,43.73,90.85333333,"['port1', 'port2', 'port3']","[374, 399, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port1,port1,6.266494036,4,0,0,4731,0,0,port1,10_08_20_11_11_44,SP,MO,Blank,25.17,43.73,90.85333333,"['port1', 'port1', 'port1', 'port1']","[151, 215, 364, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port1,port1,11.03512955,1,0,0,4001,0,0,port1,10_08_20_11_12_17,SP,MO,Gloves,25.17,43.73,90.85333333,['port1'],[4001]
+Bruce,Mallory,1,1,Training,Training1,4000,port2,port2,9.029093742,0,1,0,0,4001,0,port2,10_08_20_11_12_48,MO,SP,Blank,25.17,43.73,90.85333333,['port2'],[4001]
+Bruce,Mallory,1,1,Training,Training1,4000,port2,port2,2.936838627,0,3,1,0,4449,378,port2,10_08_20_11_13_19,MO,SP,Gloves,25.17,43.73,90.85333333,"['port2', 'port3', 'port2', 'port2']","[386, 378, 62, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port3,port3,6.453873396,0,1,1,0,448,4001,port3,10_08_20_11_13_52,Limonene,Cotton,SP,25.17,43.73,90.85333333,"['port2', 'port3']","[448, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port3,port3,5.176062584,4,2,1,6975,209,4001,port1,10_08_20_11_14_32,Blank,MO,SP,25.17,43.73,90.85333333,"['port2', 'port1', 'port1', 'port1', 'port1', 'port2', 'port3']","[182, 154, 216, 4001, 2604, 27, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port1,port1,3.215872526,1,1,0,4001,35,0,port1,10_08_20_11_15_03,SP,MO,Cotton,25.17,43.73,90.85333333,"['port2', 'port1']","[35, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port3,port3,5.30882287,0,1,1,0,316,4001,port3,10_08_20_11_15_35,Blank,Limonene,SP,25.17,43.73,90.85333333,"['port2', 'port3']","[316, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port2,port2,11.14152193,0,1,0,0,4001,0,port2,10_08_20_11_16_08,MO,SP,Gloves,25.17,43.73,90.85333333,['port2'],[4001]
+Bruce,Mallory,1,1,Training,Training1,4000,port1,port1,2.118565798,1,2,1,4001,393,612,port1,10_08_20_11_16_39,SP,Cotton,Limonene,25.17,43.73,90.85333333,"['port2', 'port3', 'port2', 'port1']","[89, 612, 304, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port1,port1,3.030282974,2,1,1,4402,475,435,port1,10_08_20_11_17_11,SP,MO,Cotton,25.17,43.73,90.85333333,"['port2', 'port3', 'port1', 'port1']","[475, 435, 401, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port1,port1,5.065243721,1,2,1,4001,146,449,port1,10_08_20_11_17_44,SP,Limonene,MO,25.17,43.73,90.85333333,"['port2', 'port3', 'port2', 'port1']","[77, 449, 69, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port3,port3,6.555953741,0,1,1,0,338,4001,port3,10_08_20_11_18_17,MO,Cotton,SP,25.17,43.73,90.85333333,"['port2', 'port3']","[338, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port3,port3,7.457432985,1,1,1,444,687,4001,port3,10_08_20_11_18_52,MO,Blank,SP,25.17,43.73,90.85333333,"['port1', 'port2', 'port3']","[444, 687, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port3,port3,9.197643995,1,1,1,3693,540,4001,port3,10_08_20_11_19_29,MO,Blank,SP,25.17,43.73,90.85333333,"['port1', 'port2', 'port3']","[3693, 540, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port2,port2,3.939428091,0,3,0,0,4245,0,port2,10_08_20_11_20_00,Limonene,SP,Limonene,25.17,43.73,90.85333333,"['port2', 'port2', 'port2']","[166, 78, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port1,port1,4.828787088,1,1,1,4001,64,499,port1,10_08_20_11_20_33,SP,Limonene,Gloves,25.17,43.73,90.85333333,"['port2', 'port3', 'port1']","[64, 499, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port3,port3,3.830561876,3,1,1,8379,70,4001,port1,10_08_20_11_21_14,MO,Blank,SP,25.17,43.73,90.85333333,"['port2', 'port1', 'port1', 'port1', 'port3']","[70, 4001, 4001, 377, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port2,port2,11.22600746,0,2,1,0,4359,210,port2,10_08_20_11_21_52,Cotton,SP,Limonene,25.17,43.73,90.85333333,"['port2', 'port3', 'port2']","[358, 210, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port1,port1,7.730050325,1,1,0,4001,494,0,port1,10_08_20_11_22_27,SP,Cotton,Limonene,25.17,43.73,90.85333333,"['port2', 'port1']","[494, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port2,port2,4.717118263,0,2,0,0,4260,0,port2,10_08_20_11_22_58,MO,SP,Gloves,25.17,43.73,90.85333333,"['port2', 'port2']","[259, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port1,port1,2.876749516,1,1,2,4001,281,877,port1,10_08_20_11_23_30,SP,Gloves,Limonene,25.17,43.73,90.85333333,"['port2', 'port3', 'port3', 'port1']","[281, 40, 837, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port2,port2,16.95825028,0,1,0,0,4001,0,port2,10_08_20_11_24_09,Cotton,SP,Cotton,25.17,43.73,90.85333333,['port2'],[4001]
+Bruce,Mallory,1,1,Training,Training1,4000,port2,port2,4.84160161,0,2,1,0,4699,238,port2,10_08_20_11_24_42,Gloves,SP,Gloves,25.17,43.73,90.85333333,"['port2', 'port3', 'port2']","[698, 238, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port1,port1,12.01486397,1,2,0,4001,633,0,port1,10_08_20_11_25_21,SP,Limonene,Limonene,25.17,43.73,90.85333333,"['port2', 'port2', 'port1']","[273, 360, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port1,port1,2.9666996,3,1,0,5153,428,0,port1,10_08_20_11_25_56,SP,Blank,Cotton,25.17,43.73,90.85333333,"['port2', 'port1', 'port1', 'port1']","[428, 581, 571, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port2,port2,7.060888529,0,2,0,0,4762,0,port2,10_08_20_11_26_30,Gloves,SP,Cotton,25.17,43.73,90.85333333,"['port2', 'port2']","[761, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port3,port3,4.931776524,0,1,1,0,242,4001,port3,10_08_20_11_27_01,Limonene,Limonene,SP,25.17,43.73,90.85333333,"['port2', 'port3']","[242, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port3,port3,4.095989227,0,1,1,0,295,4001,port3,10_08_20_11_27_31,MO,MO,SP,25.17,43.73,90.85333333,"['port2', 'port3']","[295, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port3,port3,3.489160776,1,1,1,119,218,4001,port3,10_08_20_11_28_03,Cotton,Blank,SP,25.17,43.73,90.85333333,"['port1', 'port2', 'port3']","[119, 218, 4001]"
+Bruce,Mallory,1,1,Training,Training1,4000,port2,port2,2.624329329,2,2,1,3471,4256,286,port2,10_08_20_11_28_38,Blank,SP,Limonene,25.17,43.73,90.85333333,"['port3', 'port2', 'port1', 'port1', 'port2']","[286, 255, 71, 3400, 4001]"
