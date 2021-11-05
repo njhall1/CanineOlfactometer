@@ -401,16 +401,16 @@ class Training0Thread(QtCore.QThread):
         wd=os.getcwd()
         
         if myos=='posix':
-            self.sound=pyglet.media.load('{}/food.wav'.format(wd), streaming=False)
-            self.tone=pyglet.media.load('{}/432_short.wav'.format(wd), streaming=False)
-            self.fail=pyglet.media.load('{}/fail_buzzer.wav'.format(wd), streaming=False)
-            self.end=pyglet.media.load('{}/beepEnd.wav'.format(wd), streaming=False)
+            self.sound=pyglet.media.load('{}/Tones/food.wav'.format(wd), streaming=False)
+            self.tone=pyglet.media.load('{}/Tones/432_short.wav'.format(wd), streaming=False)
+            self.fail=pyglet.media.load('{}/Tones/fail_buzzer.wav'.format(wd), streaming=False)
+            self.end=pyglet.media.load('{}/Tones/beepEnd.wav'.format(wd), streaming=False)
         else:
             
-            self.sound ='{}/food.wav'.format(wd)
-            self.tone ='{}/432_short.wav'.format(wd)
-            self.fail ='{}/fail_buzzer.wav'.format(wd)
-            self.end ='{}/beepEnd.wav'.format(wd)
+            self.sound ='{}/Tones/food.wav'.format(wd)
+            self.tone ='{}/Tones/432_short.wav'.format(wd)
+            self.fail ='{}/Tones/fail_buzzer.wav'.format(wd)
+            self.end ='{}/Tones/beepEnd.wav'.format(wd)
         
         
         
@@ -858,10 +858,10 @@ class Threshold(Training0Thread):
         self.devices=Devices
         self.Info=Info
         wd=os.getcwd()
-        self.sound ='{}/food.wav'.format(wd)
-        self.tone ='{}/432_short.wav'.format(wd)
-        self.fail ='{}/fail_buzzer.wav'.format(wd)
-        self.end ='{}/beepEnd.wav'.format(wd)
+        self.sound ='{}/Tones/food.wav'.format(wd)
+        self.tone ='{}/Tones/432_short.wav'.format(wd)
+        self.fail ='{}/Tones/fail_buzzer.wav'.format(wd)
+        self.end ='{}/Tones/beepEnd.wav'.format(wd)
         self.odorOff()
         self.concentrationIndex=0
         self.reversals=0
