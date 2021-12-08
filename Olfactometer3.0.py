@@ -667,7 +667,7 @@ class Training0Thread(QtCore.QThread):
                 
         trialData=[self.Info["DogName"], self.Info["ExpName"],
                    self.Info["NumberTrials"],
-                   self.Info["SniffTime"], self.Info["TrialTime"],
+                   self.Trial["TrialSniff"], self.Info["TrialTime"],
                    self.Info["SessionNumber"], self.Info['DaySession'],
                     self.Info['TrainingLevel'],self.Info["HandlerBlind"],
                     self.Info["WaitforCorrect"], self.Info['RunCorrections'],
