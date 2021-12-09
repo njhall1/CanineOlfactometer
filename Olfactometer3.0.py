@@ -480,9 +480,9 @@ class Training0Thread(QtCore.QThread):
         
     def changeSniffTime(self):
         addRandom=random.uniform(0, self.Info['AddSniffTime'])
-        self.Trial['TrialSniff']=self.Info['SniffTime']+addRandom
+        self.Info['TrialSniff']=self.Info['SniffTime']+addRandom
         for key in self.devices:
-            self.devices[key].updateSniffTime(self.Trial['TrialSniff'])
+            self.devices[key].updateSniffTime(self.Info['TrialSniff'])
         
         
     def updateMessage(self, port, trial):
@@ -667,7 +667,7 @@ class Training0Thread(QtCore.QThread):
                 
         trialData=[self.Info["DogName"], self.Info["ExpName"],
                    self.Info["NumberTrials"],
-                   self.Trial["TrialSniff"], self.Info["TrialTime"],
+                   self.Info["TrialSniff"], self.Info["TrialTime"],
                    self.Info["SessionNumber"], self.Info['DaySession'],
                     self.Info['TrainingLevel'],self.Info["HandlerBlind"],
                     self.Info["WaitforCorrect"], self.Info['RunCorrections'],
@@ -768,10 +768,10 @@ class Training0Thread(QtCore.QThread):
                           if self.Trial['poke1number']>0 and self.Trial['poke2number']>0 and self.Trial['poke3number']>0:
                               if self.waitforcorrect=="Yes":
                                   if port=="blank":
-                                      if time.time()-self.lastResponse>self.Trial['TrialSniff']:
+                                      if time.time()-self.lastResponse>self.Info['TrialSniff']:
                                           self.Trial['response']="all clear"                                    
                               else:
-                                 if time.time()-self.lastResponse> self.Trial['TrialSniff']:
+                                 if time.time()-self.lastResponse> self.Info['TrialSniff']:
                                      self.Trial['response']="all clear"
                           
                           
@@ -799,7 +799,7 @@ class Training0Thread(QtCore.QThread):
                    self.Trial['latency']=time.time()-self.startTime
                    self.isSniffed=1
                    
-        if sniffTime>=self.Trial["TrialSniff"]:
+        if sniffTime>=self.Info["TrialSniff"]:
                  if self.Trial['firstResponse']==0:
                      self.Trial['firstResponse']=port
                  if self.waitforcorrect=='Yes':
