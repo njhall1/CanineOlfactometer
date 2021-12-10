@@ -216,6 +216,7 @@ class myapp(UI.Ui_MainWindow):
         self.Info['ExpName']=str(self.ExperimenterName.text()).capitalize().strip()
         self.Info['NumberTrials']=int(self.NumberofTrials.currentText())
         self.Info['SniffTime']=int(float(self.AlertTime.value())*1000) #Convert to millisecond 
+        self.Info['AddSniffTime']=int(float(self.AlertTime_2.value())*1000) #Convert to millisecond 
         self.Info['TrialTime']=int(self.TrialTime.value())
         self.Info['SessionNumber']=self.Session.value()
         self.Info['DaySession']=self.DaySession.value()
@@ -435,14 +436,15 @@ class Training0Thread(QtCore.QThread):
         self.odors, self.valves, self.odorNames = self.createOdorDictionary()
         self.trialOrder, self.outcome, self.probes=self.createTrialOrder()
       
-        #Update the Alert Time
-        self.changeSniffTime()
+        
         
     def run(self):   
         self.initializeRun()
        
         trial=0
         for i in self.trialOrder:
+            #Update the Alert Time
+            self.changeSniffTime()
             port=i
             self.updateMessage(port, trial+1)
             self.odorOn(port, self.probes[trial])
@@ -477,8 +479,10 @@ class Training0Thread(QtCore.QThread):
 
         
     def changeSniffTime(self):
+        addRandom=random.uniform(0, self.Info['AddSniffTime'])
+        self.Info['TrialSniff']=self.Info['SniffTime']+addRandom
         for key in self.devices:
-            self.devices[key].updateSniffTime(self.Info['SniffTime'])
+            self.devices[key].updateSniffTime(self.Info['TrialSniff'])
         
         
     def updateMessage(self, port, trial):
@@ -663,7 +667,7 @@ class Training0Thread(QtCore.QThread):
                 
         trialData=[self.Info["DogName"], self.Info["ExpName"],
                    self.Info["NumberTrials"],
-                   self.Info["SniffTime"], self.Info["TrialTime"],
+                   self.Info["TrialSniff"], self.Info["TrialTime"],
                    self.Info["SessionNumber"], self.Info['DaySession'],
                     self.Info['TrainingLevel'],self.Info["HandlerBlind"],
                     self.Info["WaitforCorrect"], self.Info['RunCorrections'],
@@ -764,10 +768,10 @@ class Training0Thread(QtCore.QThread):
                           if self.Trial['poke1number']>0 and self.Trial['poke2number']>0 and self.Trial['poke3number']>0:
                               if self.waitforcorrect=="Yes":
                                   if port=="blank":
-                                      if time.time()-self.lastResponse>4:
+                                      if time.time()-self.lastResponse>self.Info['TrialSniff']:
                                           self.Trial['response']="all clear"                                    
                               else:
-                                 if time.time()-self.lastResponse>4:
+                                 if time.time()-self.lastResponse> self.Info['TrialSniff']:
                                      self.Trial['response']="all clear"
                           
                           
@@ -795,7 +799,7 @@ class Training0Thread(QtCore.QThread):
                    self.Trial['latency']=time.time()-self.startTime
                    self.isSniffed=1
                    
-        if sniffTime>=self.Info["SniffTime"]:
+        if sniffTime>=self.Info["TrialSniff"]:
                  if self.Trial['firstResponse']==0:
                      self.Trial['firstResponse']=port
                  if self.waitforcorrect=='Yes':
