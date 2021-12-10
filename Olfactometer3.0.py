@@ -768,10 +768,10 @@ class Training0Thread(QtCore.QThread):
                           if self.Trial['poke1number']>0 and self.Trial['poke2number']>0 and self.Trial['poke3number']>0:
                               if self.waitforcorrect=="Yes":
                                   if port=="blank":
-                                      if time.time()-self.lastResponse>self.Info['TrialSniff']:
+                                      if time.time()-self.lastResponse>self.Info['TrialSniff']/1000:
                                           self.Trial['response']="all clear"                                    
                               else:
-                                 if time.time()-self.lastResponse> self.Info['TrialSniff']:
+                                 if time.time()-self.lastResponse> self.Info['TrialSniff']/1000:
                                      self.Trial['response']="all clear"
                           
                           
