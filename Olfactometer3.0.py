@@ -303,7 +303,7 @@ class myapp(UI.Ui_MainWindow):
                 self.Trials= AFCThread(self.devices, self.Info)
 
                                
-            if self.Info['TrainingLevel']=="GoNoGO":
+            if self.Info['TrainingLevel']=="GoNoGo":
                 if "Olfactometer2" in self.devices:
                     self.devices.pop("Olfactometer2")
                 if "Olfactometer3" in self.devices:
