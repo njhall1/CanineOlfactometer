@@ -1079,15 +1079,10 @@ class GoNoGoThread(AFCThread):
         while(self.Trial['response']==0):
             sniff1=int(self.devices["Olfactometer1"].readIRs())
             self.checkResponse(sniff1, "port1")
+        
             if self.Trial['response']==0:
-               sniff2=int(self.devices["Olfactometer2"].readIRs())
-               self.checkResponse(sniff2, "port2")
-               if self.Trial['response']==0:
-                  sniff3=int(self.devices["Olfactometer3"].readIRs())
-                  self.checkResponse(sniff3, "port3")
-                  if self.Trial['response']==0:
                       #Check for a timeout
-                      if time.time()-self.startTime>timeout:
+                     if time.time()-self.startTime>timeout:
                           self.Trial['response']="timeout"
                           
                       ###Check if it was an all clear response
@@ -1101,7 +1096,23 @@ class GoNoGoThread(AFCThread):
                                  if time.time()-self.lastResponse> self.Info['TrialSniff']:
                                      self.Trial['response']="all clear"
                           
+    def odorOn(self, port, probe=0):
+        #Activate the Target port and distractor for the remainder
+        Targets=self.Info['Targets']
+        Distractors=self.Info['Distractors']
+        Probes=self.Info['Probes']
 
+        if port=="port1":
+            target=random.choices(Targets, weights=self.Info["OdorWeights"])[0]
+            if probe==1:
+                target=Probes[0]
+            self.devices['Olfactometer1'].activateValve(self.valves[target])
+            self.port1Odor=target
+        else: 
+             pass
+        
+        
+            
 
       
 class Arduino(object):
