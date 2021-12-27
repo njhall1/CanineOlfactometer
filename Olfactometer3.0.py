@@ -286,7 +286,7 @@ class myapp(UI.Ui_MainWindow):
             if "Olfactometer1" and "Olfactometer2" and "Olfactometer3" in self.devices: 
                 arduinosConnected="yes" 
         elif self.Info['TrainingLevel']=="GoNoGo":
-            if "Olfactometer2"  in self.devices: 
+            if "Olfactometer1"  in self.devices: 
                 arduinosConnected="yes" 
                 
         if arduinosConnected=="no":
@@ -761,10 +761,10 @@ class AFCThread(QtCore.QThread):
                           if self.Trial['poke1number']>0 and self.Trial['poke2number']>0 and self.Trial['poke3number']>0:
                               if self.waitforcorrect=="Yes":
                                   if port=="blank":
-                                      if time.time()-self.lastResponse>self.Info['TrialSniff']:
+                                      if time.time()-self.lastResponse>(self.Info['TrialSniff']/1000):
                                           self.Trial['response']="all clear"                                    
                               else:
-                                 if time.time()-self.lastResponse> self.Info['TrialSniff']:
+                                 if time.time()-self.lastResponse> (self.Info['TrialSniff']/1000):
                                      self.Trial['response']="all clear"
                           
                           
@@ -1047,6 +1047,7 @@ class GoNoGoThread(AFCThread):
     
     def __init__(self, Devices, Info):     
         QtCore.QThread.__init__(self)
+        super().__init__(Devices, Info)
         self.stopped = QtCore.QEvent(QtCore.QEvent.User)
         self.stopped.setAccepted(False)
         self.devices=Devices
@@ -1082,34 +1083,49 @@ class GoNoGoThread(AFCThread):
         
             if self.Trial['response']==0:
                       #Check for a timeout
+                     print("checking for all clear")
                      if time.time()-self.startTime>timeout:
                           self.Trial['response']="timeout"
                           
                       ###Check if it was an all clear response
-                      if blankSearch=='yes':
+                     if blankSearch=='yes':
+                          print("blank search is yes")
                           if self.Trial['poke1number']>0 :
+                              print("poke1 number is >0")
                               if self.waitforcorrect=="Yes":
                                   if port=="blank":
-                                      if time.time()-self.lastResponse>self.Info['TrialSniff']:
+                                      if time.time()-self.lastResponse>(self.Info['TrialSniff'])/1000:
                                           self.Trial['response']="all clear"                                    
                               else:
-                                 if time.time()-self.lastResponse> self.Info['TrialSniff']:
+                                 print ("Checking the time")
+                                 print (self.Info['TrialSniff'])
+                                 print (time.time()-self.lastResponse)
+                                 if time.time()-self.lastResponse> (self.Info['TrialSniff'])/1000:
+                                     
                                      self.Trial['response']="all clear"
+                                     
+        return(self.Trial)                          
+                                     
                           
     def odorOn(self, port, probe=0):
         #Activate the Target port and distractor for the remainder
         Targets=self.Info['Targets']
         Distractors=self.Info['Distractors']
         Probes=self.Info['Probes']
-
+        self.port2Odor="NA"
+        self.port3Odor="NA"
+        
         if port=="port1":
             target=random.choices(Targets, weights=self.Info["OdorWeights"])[0]
             if probe==1:
                 target=Probes[0]
             self.devices['Olfactometer1'].activateValve(self.valves[target])
             self.port1Odor=target
+          
         else: 
-             pass
+             distractor=random.choice(Distractors)
+             self.devices["Olfactometer1"].activateValve(self.valves[distractor])
+             self.port1Odor=distractor
         
         
             
