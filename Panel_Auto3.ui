@@ -18,13 +18,13 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>20</y>
+      <y>10</y>
       <width>1131</width>
       <height>741</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -33,29 +33,31 @@
      <widget class="QWidget" name="gridLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>90</x>
-        <y>500</y>
+        <x>120</x>
+        <y>480</y>
         <width>961</width>
         <height>111</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="1" column="3">
-        <widget class="QComboBox" name="Odor3"/>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="TargDist_1">
+         <item>
+          <property name="text">
+           <string>Target</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Distractor</string>
+          </property>
+         </item>
+        </widget>
        </item>
-       <item row="1" column="5">
-        <widget class="QComboBox" name="Odor5"/>
-       </item>
-       <item row="1" column="4">
-        <widget class="QComboBox" name="Odor4"/>
-       </item>
-       <item row="1" column="6">
-        <widget class="QComboBox" name="Odor6"/>
-       </item>
-       <item row="0" column="2">
-        <widget class="QLabel" name="label_10">
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_28">
          <property name="text">
-          <string>Valve 2</string>
+          <string>Target or Distractor</string>
          </property>
         </widget>
        </item>
@@ -66,22 +68,18 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="4">
-        <widget class="QLabel" name="label_14">
+       <item row="0" column="2">
+        <widget class="QLabel" name="label_10">
          <property name="text">
-          <string>Valve 4</string>
+          <string>Valve 2</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="5">
-        <widget class="QLabel" name="label_21">
-         <property name="text">
-          <string>Valve 5</string>
-         </property>
-        </widget>
+       <item row="1" column="3">
+        <widget class="QComboBox" name="Odor3"/>
        </item>
-       <item row="1" column="1">
-        <widget class="QComboBox" name="Odor1"/>
+       <item row="1" column="6">
+        <widget class="QComboBox" name="Odor6"/>
        </item>
        <item row="1" column="2">
         <widget class="QComboBox" name="Odor2"/>
@@ -100,11 +98,203 @@
          </property>
         </widget>
        </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="Odor1"/>
+       </item>
        <item row="1" column="0">
         <widget class="QPushButton" name="EditOdorList">
          <property name="text">
           <string>Edit Odor List?</string>
          </property>
+        </widget>
+       </item>
+       <item row="0" column="5">
+        <widget class="QLabel" name="label_21">
+         <property name="text">
+          <string>Valve 5</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4">
+        <widget class="QComboBox" name="Odor4"/>
+       </item>
+       <item row="1" column="5">
+        <widget class="QComboBox" name="Odor5"/>
+       </item>
+       <item row="0" column="4">
+        <widget class="QLabel" name="label_14">
+         <property name="text">
+          <string>Valve 4</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="5">
+        <widget class="QComboBox" name="TargDist_5">
+         <property name="currentIndex">
+          <number>1</number>
+         </property>
+         <item>
+          <property name="text">
+           <string>Distractor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>None</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="4">
+        <widget class="QComboBox" name="TargDist_4">
+         <property name="currentIndex">
+          <number>1</number>
+         </property>
+         <item>
+          <property name="text">
+           <string>Distractor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>None</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="QComboBox" name="TargDist_3">
+         <property name="currentIndex">
+          <number>2</number>
+         </property>
+         <item>
+          <property name="text">
+           <string>Target</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Distractor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>None</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="6">
+        <widget class="QComboBox" name="TargDist_6">
+         <property name="currentIndex">
+          <number>1</number>
+         </property>
+         <item>
+          <property name="text">
+           <string>Distractor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>None</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QComboBox" name="TargDist_2">
+         <property name="currentIndex">
+          <number>1</number>
+         </property>
+         <item>
+          <property name="text">
+           <string>Target</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Distractor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Probe</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_29">
+         <property name="text">
+          <string>Weigths</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QComboBox" name="OdorWeights_1">
+         <item>
+          <property name="text">
+           <string>1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QComboBox" name="OdorWeights_2">
+         <item>
+          <property name="text">
+           <string>0</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="3" column="3">
+        <widget class="QComboBox" name="OdorWeights_3">
+         <item>
+          <property name="text">
+           <string>0</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3</string>
+          </property>
+         </item>
         </widget>
        </item>
       </layout>
@@ -119,52 +309,10 @@
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
-       <item row="13" column="0">
-        <widget class="QLabel" name="label_23">
-         <property name="text">
-          <string>Handler Blind</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="3">
-        <widget class="QComboBox" name="RunCorrections">
-         <item>
-          <property name="text">
-           <string>No</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Yes</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="2" column="2">
-        <widget class="QLabel" name="label_20">
-         <property name="text">
-          <string>Run corrections?</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="label_18">
-         <property name="text">
-          <string>Trial Time (s)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="2">
-        <widget class="QLabel" name="label_5">
-         <property name="text">
-          <string>Use Tones</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Alert Time</string>
+       <item row="4" column="1">
+        <widget class="QDoubleSpinBox" name="AlertTime">
+         <property name="value">
+          <double>4.000000000000000</double>
          </property>
         </widget>
        </item>
@@ -182,13 +330,55 @@
          </item>
         </widget>
        </item>
+       <item row="7" column="2">
+        <widget class="QLabel" name="label_19">
+         <property name="text">
+          <string>N Generalization Trials</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QLabel" name="label_15">
+         <property name="text">
+          <string>Reinforce Targets</string>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="1">
+        <widget class="QComboBox" name="HandlerBlind">
+         <item>
+          <property name="text">
+           <string>Yes</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>No</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Dog Name</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Alert Time</string>
+         </property>
+        </widget>
+       </item>
        <item row="3" column="3">
         <widget class="QComboBox" name="OdorPrev">
          <property name="currentText">
-          <string>0.9</string>
+          <string>0.8</string>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>2</number>
          </property>
          <item>
           <property name="text">
@@ -237,10 +427,17 @@
          </item>
         </widget>
        </item>
-       <item row="4" column="2">
-        <widget class="QLabel" name="label_13">
+       <item row="2" column="2">
+        <widget class="QLabel" name="label_20">
          <property name="text">
-          <string>Reinforce Blanks</string>
+          <string>Run corrections?</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_17">
+         <property name="text">
+          <string>Number of Trials</string>
          </property>
         </widget>
        </item>
@@ -258,10 +455,38 @@
          </item>
         </widget>
        </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_17">
+       <item row="6" column="2">
+        <widget class="QLabel" name="label_5">
          <property name="text">
-          <string>Number of Trials</string>
+          <string>Use Tones</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLabel" name="label_16">
+         <property name="text">
+          <string>Wait for a Correct Response? </string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="QComboBox" name="RunCorrections">
+         <item>
+          <property name="text">
+           <string>No</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Yes</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QLabel" name="label_13">
+         <property name="text">
+          <string>Reinforce Blanks</string>
          </property>
         </widget>
        </item>
@@ -272,6 +497,13 @@
          </property>
         </widget>
        </item>
+       <item row="13" column="0">
+        <widget class="QLabel" name="label_23">
+         <property name="text">
+          <string>Handler Blind</string>
+         </property>
+        </widget>
+       </item>
        <item row="3" column="2">
         <widget class="QLabel" name="label_12">
          <property name="text">
@@ -279,8 +511,83 @@
          </property>
         </widget>
        </item>
-       <item row="13" column="1">
-        <widget class="QComboBox" name="HandlerBlind">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Level</string>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="3">
+        <widget class="QLineEdit" name="Notes"/>
+       </item>
+       <item row="4" column="3">
+        <widget class="QComboBox" name="ReinforceBlanks">
+         <property name="currentText">
+          <string>1.00</string>
+         </property>
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <item>
+          <property name="text">
+           <string>1.00</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>0.90</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>0.80</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>0.70</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>0.60</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>0.50</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>0.40</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>0.30</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>0.20</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>0.10</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>0.00</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="10" column="3">
+        <widget class="QComboBox" name="comboBox">
          <item>
           <property name="text">
            <string>Yes</string>
@@ -293,57 +600,47 @@
          </item>
         </widget>
        </item>
-       <item row="1" column="2">
-        <widget class="QLabel" name="label_16">
+       <item row="7" column="3">
+        <widget class="QComboBox" name="GenProbes">
+         <item>
+          <property name="text">
+           <string>0</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="10" column="2">
+        <widget class="QLabel" name="label_24">
          <property name="text">
-          <string>Wait for a Correct Response? </string>
+          <string>Auto Score Alerts</string>
          </property>
         </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QDoubleSpinBox" name="AlertTime">
-         <property name="value">
-          <double>4.000000000000000</double>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="2">
-        <widget class="QLabel" name="label_19">
-         <property name="text">
-          <string>Generalization Probes with Valve 2?</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="2">
-        <widget class="QLabel" name="label_15">
-         <property name="text">
-          <string>Reinforce Targets</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Dog Name</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="1">
-        <widget class="QSpinBox" name="DaySession"/>
-       </item>
-       <item row="13" column="3">
-        <widget class="QLineEdit" name="Notes"/>
        </item>
        <item row="3" column="1">
         <widget class="QComboBox" name="NumberofTrials">
          <property name="currentText">
-          <string>5</string>
+          <string>10</string>
          </property>
-         <item>
-          <property name="text">
-           <string>5</string>
-          </property>
-         </item>
          <item>
           <property name="text">
            <string>10</string>
@@ -375,80 +672,6 @@
           </property>
          </item>
         </widget>
-       </item>
-       <item row="6" column="1">
-        <widget class="QSpinBox" name="Session"/>
-       </item>
-       <item row="4" column="3">
-        <widget class="QComboBox" name="ReinforceBlanks">
-         <property name="currentText">
-          <string>0.00</string>
-         </property>
-         <property name="currentIndex">
-          <number>3</number>
-         </property>
-         <item>
-          <property name="text">
-           <string>1.00</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>0.50</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>0.25</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>0.00</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="13" column="2">
-        <widget class="QLabel" name="label_26">
-         <property name="text">
-          <string>Notes</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLineEdit" name="ExperimenterName"/>
-       </item>
-       <item row="5" column="1">
-        <widget class="QSpinBox" name="TrialTime">
-         <property name="value">
-          <number>45</number>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0">
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>Session</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="3">
-        <widget class="QComboBox" name="GenProbes">
-         <item>
-          <property name="text">
-           <string>No</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Yes</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="DogName"/>
        </item>
        <item row="5" column="3">
         <widget class="QComboBox" name="ReinforceTargets">
@@ -504,61 +727,16 @@
          </item>
         </widget>
        </item>
-       <item row="7" column="0">
-        <widget class="QLabel" name="label_6">
-         <property name="text">
-          <string>Day Session</string>
-         </property>
-        </widget>
-       </item>
-       <item row="10" column="3">
-        <widget class="QComboBox" name="comboBox">
-         <item>
-          <property name="text">
-           <string>Yes</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>No</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="10" column="2">
-        <widget class="QLabel" name="label_24">
-         <property name="text">
-          <string>Auto Score Alerts</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>Level</string>
-         </property>
-        </widget>
-       </item>
        <item row="0" column="1">
         <widget class="QComboBox" name="TrainingLevel">
          <item>
           <property name="text">
-           <string>Training0</string>
+           <string>3AFC</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>Training1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Training2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Generalization Test</string>
+           <string>GoNoGo</string>
           </property>
          </item>
          <item>
@@ -573,13 +751,74 @@
          </item>
         </widget>
        </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="ExperimenterName"/>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="DogName"/>
+       </item>
+       <item row="13" column="2">
+        <widget class="QLabel" name="label_26">
+         <property name="text">
+          <string>Notes</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="1">
+        <widget class="QSpinBox" name="DaySession"/>
+       </item>
+       <item row="10" column="0">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Day Session</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Session</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QSpinBox" name="Session"/>
+       </item>
+       <item row="6" column="1">
+        <widget class="QSpinBox" name="TrialTime">
+         <property name="value">
+          <number>45</number>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_18">
+         <property name="text">
+          <string>Trial Time (s)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QDoubleSpinBox" name="AlertTime_2">
+         <property name="value">
+          <double>0.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_35">
+         <property name="text">
+          <string>Add random alert Time</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QLabel" name="label_8">
       <property name="geometry">
        <rect>
         <x>540</x>
-        <y>410</y>
+        <y>390</y>
         <width>161</width>
         <height>71</height>
        </rect>
@@ -597,7 +836,7 @@
       <property name="geometry">
        <rect>
         <x>570</x>
-        <y>640</y>
+        <y>620</y>
         <width>96</width>
         <height>28</height>
        </rect>
@@ -816,29 +1055,72 @@
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_3">
-       <item row="1" column="0">
-        <widget class="QPushButton" name="AddOdor">
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="NewOdor_1"/>
+       </item>
+       <item row="6" column="1">
+        <widget class="QPushButton" name="ResetOdors">
          <property name="text">
-          <string>Add Odor</string>
+          <string>Re-set Odor Names</string>
          </property>
         </widget>
        </item>
        <item row="0" column="0">
         <widget class="QLabel" name="label_25">
          <property name="text">
-          <string>Enter odor name you wish to add or remove</string>
+          <string>Valve 1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_30">
+         <property name="text">
+          <string>Valve 2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_33">
+         <property name="text">
+          <string>Valve 5</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_32">
+         <property name="text">
+          <string>Valve 4</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_31">
+         <property name="text">
+          <string>Valve 3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_34">
+         <property name="text">
+          <string>Valve 6</string>
          </property>
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QPushButton" name="RemoveOdor">
-         <property name="text">
-          <string>Remove Odor</string>
-         </property>
-        </widget>
+        <widget class="QLineEdit" name="NewOdor_2"/>
        </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="NewOdor"/>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="NewOdor_3"/>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="NewOdor_4"/>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="NewOdor_5"/>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="NewOdor_6"/>
        </item>
       </layout>
      </widget>

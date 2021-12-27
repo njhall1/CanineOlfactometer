@@ -1,5 +1,5 @@
 
-String myname="Panel";
+String myname="Olfactometer1";
 #include <Arduino_HTS221.h>
 #include <Arduino_LPS22HB.h>
 

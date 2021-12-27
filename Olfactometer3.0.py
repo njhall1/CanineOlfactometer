@@ -15,10 +15,8 @@ import sys
 from datetime import datetime
 import os
 import random
-from shutil import copyfile
 import serial.tools.list_ports
 import math
-import numpy
 myos=os.name
 if myos=='posix':
     import pyglet
@@ -99,17 +97,15 @@ class myapp(UI.Ui_MainWindow):
         self.Submit.clicked.connect(self.runTrials)
         self.AlertTime.setValue(4.00)
         self.NumberofTrials.setCurrentIndex(4)
-        self.TrainingLevel.addItem("Blind UnBlind Mix")
         self.TargDist_2.addItem("Probe")
         self.OdorPrev.setCurrentIndex(2)
         self.NumberofTrials.setCurrentIndex(2)
         self.TrainingLevel.currentIndexChanged.connect(self.updateSettings)
         self.ResetOdors.clicked.connect(self.updateOdors)
-        self.TrainingLevel.addItem("Last Used")
         self.TrainingLevel.setCurrentIndex(0)
         
         #Add odor list to 
-        
+
         for i in odorlist:
             self.Odor1.addItem(i)
             self.Odor2.addItem(i)
@@ -125,14 +121,10 @@ class myapp(UI.Ui_MainWindow):
             self.Odor6.setCurrentIndex(5)
     
     def updateSettings(self):
-        if self.TrainingLevel.currentText()=="Blind UnBlind Mix":
-            print("updating stuff")
-            self.WaitforCorrect.setCurrentIndex(1)
-            self.NumberofTrials.setCurrentIndex(2)
             
-        if self.TrainingLevel.currentText()=="Generalization Test":
+        if self.TrainingLevel.currentText()=="GoNoGo":
             print("updating stuff")
-            self.GenProbes.setCurrentIndex(1)
+            self.OdorPrev.setCurrentIndex(5)
             
         if self.TrainingLevel.currentText=="Last Saved":
             mysettings=fileIO.fileIO("Settings.csv")
@@ -290,9 +282,13 @@ class myapp(UI.Ui_MainWindow):
         
         #######################################################################
         #Have this update the list of Olfactometers to indicate which are connected and which are not
-        if "Olfactometer1" and "Olfactometer2" and "Olfactometer3" in self.devices: #and add panel later
-           arduinosConnected="yes" 
-        
+        if self.Info['TrainingLevel']=="3AFC":
+            if "Olfactometer1" and "Olfactometer2" and "Olfactometer3" in self.devices: 
+                arduinosConnected="yes" 
+        elif self.Info['TrainingLevel']=="GoNoGo":
+            if "Olfactometer1"  in self.devices: 
+                arduinosConnected="yes" 
+                
         if arduinosConnected=="no":
             self.exception_screen("Something is not connected")
        ###########################################################################
@@ -302,21 +298,18 @@ class myapp(UI.Ui_MainWindow):
         if arduinosConnected=="yes":
            
             #Start Testing Thread
-            if self.Info['TrainingLevel']=="Training0":
+            if self.Info['TrainingLevel']=="3AFC":
                 self.Info['datasheet'], self.Info['filename'] =create_datasheet(self.Info['DogName'], self.Info['TrainingLevel']) 
-                self.Trials=Training0Thread(self.devices, self.Info)
-                if self.Info["AutoScore"]=="No":
-                    self.tabWidget.setCurrentIndex(2)
-                    #self.Trials=TrainingManualThread(self.devices, self.Info)
+                self.Trials= AFCThread(self.devices, self.Info)
 
-            if self.Info['TrainingLevel']=="Blind UnBlind Mix":
+                               
+            if self.Info['TrainingLevel']=="GoNoGo":
+                if "Olfactometer2" in self.devices:
+                    self.devices.pop("Olfactometer2")
+                if "Olfactometer3" in self.devices:
+                    self.devices.pop("Olfactometer3")    
                 self.Info['datasheet'], self.Info['filename'] =create_datasheet(self.Info['DogName'], self.Info['TrainingLevel']) 
-                self.Trials=BlindMix(self.devices, self.Info)
-           
-           
-            if self.Info['TrainingLevel']=="Generalization Test":
-                self.Info['datasheet'], self.Info['filename'] =create_datasheet(self.Info['DogName'], self.Info['TrainingLevel']) 
-                self.Trials=GeneralizationTest(self.devices, self.Info)
+                self.Trials=GoNoGoThread(self.devices, self.Info)
                 
             if self.Info['TrainingLevel']=="Threshold":
                 self.Info['datasheet'], self.Info['filename'] =create_datasheet(self.Info['DogName'], self.Info['TrainingLevel'], headerType="Threshold") 
@@ -383,7 +376,7 @@ class myapp(UI.Ui_MainWindow):
     
     
 
-class Training0Thread(QtCore.QThread):
+class AFCThread(QtCore.QThread):
     statusUpdate=QtCore.pyqtSignal(str)
     trialNum=QtCore.pyqtSignal(int)
     msg=QtCore.pyqtSignal(str)
@@ -812,9 +805,8 @@ class Training0Thread(QtCore.QThread):
         
     def odorOff(self):
         for i in range (1,7):
-            self.devices["Olfactometer1"].deactivateValve(i)    
-            self.devices["Olfactometer2"].deactivateValve(i)    
-            self.devices["Olfactometer3"].deactivateValve(i)    
+            for key in self.devices:
+                self.devices[key].deactivateValve(i)
             
 
 
@@ -823,33 +815,7 @@ class Training0Thread(QtCore.QThread):
 
 
     
-class BlindMix(Training0Thread):
-    statusUpdate=QtCore.pyqtSignal(str)
-    trialNum=QtCore.pyqtSignal(int)
-    msg=QtCore.pyqtSignal(str)
-   
-    
-    def __init__(self, Devices, Info):     
-        QtCore.QThread.__init__(self)
-        self.stopped = QtCore.QEvent(QtCore.QEvent.User)
-        self.stopped.setAccepted(False)
-        self.devices=Devices
-        self.Info=Info
-        self.Info
-        
-        
-    def updateMessage(self, port, trial):
-        unbalance=trial%4 # 
-        self.trialNum.emit(trial)
-        message="Blind"
-        if unbalance!=0:
-            message=port
-        self.statusUpdate.emit(message)
-        
-        
-        
-        
-class Threshold(Training0Thread):
+class Threshold(AFCThread):
     statusUpdate=QtCore.pyqtSignal(str)
     trialNum=QtCore.pyqtSignal(int)
     msg=QtCore.pyqtSignal(str)
@@ -1073,7 +1039,7 @@ class Threshold(Training0Thread):
 
 
 
-class GeneralizationTest(Training0Thread):
+class GoNoGoThread(AFCThread):
     statusUpdate=QtCore.pyqtSignal(str)
     trialNum=QtCore.pyqtSignal(int)
     msg=QtCore.pyqtSignal(str)
@@ -1081,106 +1047,88 @@ class GeneralizationTest(Training0Thread):
     
     def __init__(self, Devices, Info):     
         QtCore.QThread.__init__(self)
+        super().__init__(Devices, Info)
         self.stopped = QtCore.QEvent(QtCore.QEvent.User)
         self.stopped.setAccepted(False)
         self.devices=Devices
         self.Info=Info
         
         
-    def run(self):   
-        self.initializeRun()
-       
-        trial=0
-        self.changeSniffTime()
         
-       
-        for i in self.trialOrder:
-            #choose the correct port
-            self.trialNum.emit(trial+1)
-            port=i
-            self.odorOn(port, self.probes[trial])
-            
-            #Show the Target Port 
-            self.statusUpdate.emit(port)
-            
-            #Start the Trial
-            self.startTime= time.time()
-            self.playAudio(self.tone)
-            
-            self.Trial=self.lookForResponse(port=port, 
-                                            waitforcorrect=self.Info["WaitforCorrect"],
-                                            timeout= self.Info["TrialTime"], 
-                                            blankSearch="yes")
+   
+   
+
+    def lookForResponse(self, port, waitforcorrect, timeout, blankSearch):
+        self.Trial={}
+        self.Trial["correctPort"]=port
+        self.isSniffed=0
+        self.startTime=time.time()
+        self.Trial['response']=0
+        self.Trial['latency']=0
+        self.Trial['poke1number']=0
+        self.Trial['poke2number']=0
+        self.Trial['poke3number']=0
+        self.Trial['cumulative1']=0
+        self.Trial['cumulative2']=0
+        self.Trial['cumulative3']=0
+        self.Trial['firstResponse']=0
+        self.Trial['pokeOrder']=[]
+        self.Trial['pokeTimes']=[]
+        self.lastResponse=0
+        self.waitforcorrect=waitforcorrect
              
-            
-           
-            self.giveFeedback(port, trial)
-            self.odorOff() #Clear the ports
-            self.runExhaust()
-            self.statusUpdate.emit("Odor Off")
-            
-            self.Trial["reinforce"]=self.outcome[trial]
-            self.Trial["probe"]=self.probes[trial]
-            self.Trial['TrialNumber']=trial+1
-            
-            self.recordData()
-            time.sleep(20)
-            trial=trial+1
-            self.stopExhaust()
-            
-        self.statusUpdate.emit("Finished")
- 
+        while(self.Trial['response']==0):
+            sniff1=int(self.devices["Olfactometer1"].readIRs())
+            self.checkResponse(sniff1, "port1")
         
+            if self.Trial['response']==0:
+                      #Check for a timeout
+                     print("checking for all clear")
+                     if time.time()-self.startTime>timeout:
+                          self.Trial['response']="timeout"
+                          
+                      ###Check if it was an all clear response
+                     if blankSearch=='yes':
+                          print("blank search is yes")
+                          if self.Trial['poke1number']>0 :
+                              print("poke1 number is >0")
+                              if self.waitforcorrect=="Yes":
+                                  if port=="blank":
+                                      if time.time()-self.lastResponse>(self.Info['TrialSniff'])/1000:
+                                          self.Trial['response']="all clear"                                    
+                              else:
+                                 print ("Checking the time")
+                                 print (self.Info['TrialSniff'])
+                                 print (time.time()-self.lastResponse)
+                                 if time.time()-self.lastResponse> (self.Info['TrialSniff'])/1000:
+                                     
+                                     self.Trial['response']="all clear"
+                                     
+        return(self.Trial)                          
+                                     
+                          
+    def odorOn(self, port, probe=0):
+        #Activate the Target port and distractor for the remainder
+        Targets=self.Info['Targets']
+        Distractors=self.Info['Distractors']
+        Probes=self.Info['Probes']
+        self.port2Odor="NA"
+        self.port3Odor="NA"
         
-   
-
-        
-    def giveFeedback(self, port, trial):  
-        print("givving Feedback")
-        print(self.outcome[trial])
-        print(self.probes[trial])
-        if port==self.Trial['response']: 
-            if self.outcome[trial]==1 and self.probes[trial]==0:
-                self.playAudio(self.sound)
-                time.sleep(1)
-                self.playAudio(self.end)
-                self.correct=1
-                
-            else:
-                self.playAudio(self.end)
-                self.correct=0
-               
-                
-        elif port=="blank" :
-            if self.outcome[trial]==1:
-                if self.Trial['response']=="all clear" and self.probes[trial]==0:
-                    self.playAudio(self.sound)  
-                    time.sleep(1)
-                    self.playAudio(self.end)
-                    self.correct=1
-                
-            elif self.Trial['response']!= "all clear" and self.probes[trial]==0:
-                    self.playAudio(self.fail)
-                    time.sleep(1)
-                    self.correct=0
-
-                    self.playAudio(self.end)
-                    
-            else:
-                 self.playAudio(self.end)
-                    
-        
+        if port=="port1":
+            target=random.choices(Targets, weights=self.Info["OdorWeights"])[0]
+            if probe==1:
+                target=Probes[0]
+            self.devices['Olfactometer1'].activateValve(self.valves[target])
+            self.port1Odor=target
+          
         else: 
-            if self.probes[trial]==0:
-                self.playAudio(self.fail)
-                time.sleep(1)
-                self.playAudio(self.end)
-                self.correct=0
-            else:
-               self.playAudio(self.end)
-               
-   
-   
+             distractor=random.choice(Distractors)
+             self.devices["Olfactometer1"].activateValve(self.valves[distractor])
+             self.port1Odor=distractor
+        
+        
+            
 
       
 class Arduino(object):
